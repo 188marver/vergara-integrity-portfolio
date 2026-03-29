@@ -12,39 +12,57 @@ body {
     background: #0f172a;
     color: #e5e7eb;
 }
+
 header {
     text-align: center;
-    padding: 50px;
+    padding: 60px 20px;
 }
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #38bdf8;
+}
+
 .container {
     max-width: 1000px;
     margin: auto;
     padding: 20px;
 }
+
 .card {
     background: #1e293b;
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
 }
+
 .lang-switch {
     position: fixed;
     top: 20px;
     right: 20px;
 }
+
 button {
-    padding: 8px;
+    padding: 8px 12px;
     margin: 2px;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
+
+.btn-primary {
+    background: #38bdf8;
+    color: black;
+}
+
 .hidden {
     display: none;
 }
-a {
-    color: #38bdf8;
-}
 </style>
-
 <script>
 function switchLang(lang) {
     document.getElementById('es').classList.add('hidden');
@@ -52,49 +70,103 @@ function switchLang(lang) {
     document.getElementById(lang).classList.remove('hidden');
 }
 </script>
-
 </head>
-
 <body>
-
 <div class="lang-switch">
     <button onclick="switchLang('es')">ES</button>
     <button onclick="switchLang('en')">EN</button>
 </div>
-
-<!-- ESPAÑOL -->
+<!-- ================= ESPAÑOL ================= -->
 <div id="es">
 <header>
-<h1>Marver Vergara</h1>
-<p>Ingeniera Mecánica | QA/QC | Integridad Mecánica</p>
+    <h1>Marver Vergara</h1>
+    <p><strong>Ingeniera Mecánica | Senior QA/QC Engineer | Especialista en Integridad Mecánica</strong></p>
+    <p>Oil & Gas | Refinerías | Minería | Proyectos EPC</p>
 </header>
-
 <div class="container">
+<div class="card">
+<h2>Perfil Profesional</h2>
+<p>
+Ingeniera Mecánica con sólida experiencia en aseguramiento y control de calidad (QA/QC),
+integridad mecánica e inspección en proyectos industriales críticos.
+Participación en paradas de planta, inspección de equipos estáticos,
+soldadura y cumplimiento de estándares internacionales.
+</p>
+</div>
+<div class="card">
+<h2>Experiencia Destacada</h2>
+<ul>
+<li>Refinerías ENAP – Paradas de Planta</li>
+<li>Inspección de intercambiadores, hornos y equipos estáticos</li>
+<li>Control de calidad en soldadura (ASME, API)</li>
+<li>Soporte en integridad mecánica</li>
+<li>Proyectos en minería y Oil & Gas</li>
+</ul>
+</div>
 
 <div class="card">
-<h2>Contacto</h2>
-<p>Email: <strong>mv743775@gmail.com</strong></p>
-<p>Teléfono: +56 9 44296079</p>
-<p><a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank">Ver LinkedIn</a></p>
+<h2>Certificaciones</h2>
+<ul>
+<li>NDT PT Level II</li>
+<li>Inspección de Soldadura</li>
+<li>Normativas ASME / API</li>
+<li>QA/QC Industrial</li>
+</ul>
+</div>
+<div class="card">
+<h2>Contacto: +56 9 44296079</p>
+<p>Email: mv743775@gmail.com</p>
+<p>a href="https://www.linkedin.com/in/maria-vergara-678228262">LinkedIn</a></p>
+</div>
+</div>
 </div>
 
-</div>
-</div>
-
-<!-- ENGLISH -->
+<!-- ================= ENGLISH ================= -->
 <div id="en" class="hidden">
+
 <header>
-<h1>Marver Vergara</h1>
-<p>Mechanical Engineer | QA/QC | Mechanical Integrity</p>
+    <h1>Marver Vergara</h1>
+    <p><strong>Mechanical Engineer | Senior QA/QC Engineer | Mechanical Integrity Specialist</strong></p>
+    <p>Oil & Gas | Refineries | Mining | EPC Projects</p>
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>Contact</h2>
-<p>Email: <strong>mv743775@gmail.com</strong></p>
-<p>Phone: +56 9 44296079</p>
-<p><a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank">View LinkedIn</a></p>
+<h2>Professional Profile</h2>
+<p>
+Mechanical Engineer with strong experience in Quality Assurance and Quality Control (QA/QC),
+mechanical integrity, and inspection in critical industrial projects.
+Experienced in plant shutdowns, static equipment inspection,
+welding inspection, and international standards compliance.
+</p>
+</div>
+
+<div class="card">
+<h2>Key Experience</h2>
+<ul>
+<li>ENAP Refineries – Plant Shutdown Projects</li>
+<li>Inspection of heat exchangers, furnaces, and static equipment</li>
+<li>Welding quality control (ASME, API)</li>
+<li>Mechanical integrity support</li>
+<li>Mining & Oil & Gas projects</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Certifications</h2>
+<ul>
+<li>NDT PT Level II</li>
+<li>Welding Inspection</li>
+<li>ASME / API Standards</li>
+<li>Industrial QA/QC</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Contacto: +56 9 44296079</p>
+<p>Email: mv743775@gmail.com</p>
+<p>a href="https://www.linkedin.com/in/maria-vergara-678228262">LinkedIn</a></p>
 </div>
 
 </div>
