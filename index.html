@@ -201,3 +201,104 @@ ensuring mechanical integrity, compliance and safe return to operation.
 
 </body>
 </html>
+/ (root)
+│── index.html
+│── cv.pdf
+│
+├── /certificaciones
+│ ├── pt-nivel2.pdf
+│ ├── ut-nivel1.pdf
+│ ├── mt-nivel1.pdf
+│
+├── /imagenes
+├── proyecto1.jpg
+├── refineria.jpg
+├── piping.jpg
+├── inspeccion.jpg
+<div class="cert">
+<h4>PT Nivel II – SNT-TC-1A</h4>
+<p class="es">Ensayos No Destructivos – Vigente 2026</p>
+<p class="en hidden">Non-Destructive Testing – Valid until 2026</p>
+<a href="certificaciones/pt-nivel2.pdf" download class="btn secondary">Descargar</a>
+</div>
+
+<div class="cert">
+<h4>Ultrasonido Nivel I</h4>
+<a href="certificaciones/ut-nivel1.pdf" download class="btn secondary">Download</a>
+</div>
+
+<div class="cert">
+<h4>Partículas Magnéticas Nivel I</h4>
+<a href="certificaciones/mt-nivel1.pdf" download class="btn secondary">Download</a>
+</div>
+
+</div>
+
+</div>
+</section>
+<section>
+<div class="container">
+
+<h3 class="es">Evidencia de Proyectos</h3>
+<h3 class="en hidden">Project Evidence</h3>
+
+<div class="gallery">
+
+<div class="card">
+<img src="imagenes/refineria.jpg" alt="Refinería">
+<p>Refinery Shutdown Inspection</p>
+</div>
+
+<div class="card">
+<img src="imagenes/piping.jpg" alt="Piping">
+<p>Piping QA/QC Inspection</p>
+</div>
+
+<div class="card">
+<img src="imagenes/inspeccion.jpg" alt="NDT">
+<p>NDT Inspection Execution</p>
+</div>
+
+<div class="card">
+<img src="imagenes/proyecto1.jpg" alt="Mining">
+<p>Mining Pipeline Project</p>
+</div>
+
+</div>
+
+</div>
+</section>
+.cert-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.cert {
+background: #111826;
+padding: 20px;
+border-left: 3px solid #00c6ff;
+}
+
+.gallery {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 15px;
+}
+
+.card {
+background: #111826;
+padding: 10px;
+}
+
+.card img {
+width: 100%;
+border-radius: 5px;
+}
+
+.card p {
+font-size: 0.9rem;
+color: #b0bac5;
+}
+
+
