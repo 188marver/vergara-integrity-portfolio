@@ -1,63 +1,1353 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>María Vergara | Engineering Integrity & QA/QC Excellence</title>
+    <!-- PDF.js Library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<section class="section" id="projects">
-  <h2>Critical EPC Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>El Palito Refinery</h3>
-      <p><b>Scope:</b> QA/QC, Welding, Integrity</p>
-      <p><b>Result:</b> Operational reliability ensured</p>
-    </div>
-    <div class="card">
-      <h3>Concón Refinery</h3>
-      <p><b>Scope:</b> Heat exchangers & static equipment</p>
-      <p><b>Result:</b> Compliance with standards</p>
-    </div>
-    <div class="card">
-      <h3>Biobío Refinery</h3>
-      <p><b>Scope:</b> Mechanical integrity validation</p>
-      <p><b>Result:</b> Operational continuity</p>
-    </div>
-    <div class="card">
-      <h3>Minera Escondida</h3>
-      <p><b>Scope:</b> QA/QC mining assets</p>
-      <p><b>Result:</b> High-performance operations</p>
-    </div>
-  </div>
-</section>
+        :root {
+            --primary: #0a1428;
+            --secondary: #d4af37;
+            --accent: #c9a961;
+            --light: #f5f1e8;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --border: #e5ddd0;
+            --success: #2d6a4f;
+            --shadow: 0 20px 60px rgba(0,0,0,0.08);
+            --shadow-lg: 0 40px 100px rgba(0,0,0,0.15);
+        }
 
-<section class="section" id="docs">
-  <h2>Verified Documentation</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>CV Profesional</h3>
-      <a class="btn" href="Cv_Maria_Vergara.pdf" target="_blank">Descargar</a>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fafaf8 0%, #f5f1e8 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER - HERO SECTION */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2847 100%);
+            color: var(--light);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--secondary);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: slideInRight 0.8s ease-out 0.2s both;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: #b8a888;
+            margin-bottom: 30px;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .stat {
+            animation: slideInUp 0.8s ease-out 0.5s both;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #b8a888;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        /* LANGUAGE TOGGLE BUTTON */
+        .lang-toggle {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--primary);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .lang-toggle:active {
+            transform: translateY(0);
+        }
+
+        /* MAIN SECTIONS */
+        section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--text-primary);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        /* PROJECTS SECTION */
+        #projects {
+            background: linear-gradient(135deg, rgba(245, 241, 232, 0.5) 0%, rgba(212, 175, 55, 0.05) 100%);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            animation: cardSlideUp 0.8s ease-out both;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .card b {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* DOCS SECTION */
+        #docs {
+            background: white;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .doc-card {
+            background: linear-gradient(135deg, #f9f6f0 0%, white 100%);
+            padding: 35px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--border);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: cardSlideUp 0.8s ease-out both;
+        }
+
+        .doc-card:nth-child(1) { animation-delay: 0.1s; }
+        .doc-card:nth-child(2) { animation-delay: 0.2s; }
+        .doc-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .doc-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .doc-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+        }
+
+        .doc-card:hover::after {
+            left: 100%;
+        }
+
+        .doc-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--primary);
+            padding: 12px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%);
+            transition: left 0.4s ease;
+            z-index: 0;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        /* CONTACT SECTION */
+        #contacto {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2847 100%);
+            color: var(--light);
+        }
+
+        #contacto h2,
+        #contacto h2::after {
+            color: var(--light);
+            background: linear-gradient(90deg, var(--secondary), var(--accent), transparent);
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 50px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .contact-card p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #d4d4d4;
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .icon-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .icon-link:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* PDF VIEWER MODAL */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .pdf-modal.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            height: 90vh;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        .pdf-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 2px solid var(--border);
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2847 100%);
+            color: var(--light);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .pdf-modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .pdf-modal-close {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            hover: background: rgba(255, 255, 255, 0.1);
+        }
+
+        .pdf-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .pdf-modal-body {
+            flex: 1;
+            overflow: hidden;
+            background: white;
+        }
+
+        .pdf-modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .pdf-modal-footer {
+            padding: 15px 30px;
+            background: #f5f1e8;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .pdf-download-btn {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--primary);
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .pdf-modal-content {
+                width: 95%;
+                height: 85vh;
+            }
+
+            .pdf-modal-header {
+                padding: 15px 20px;
+            }
+
+            .pdf-modal-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .pdf-modal-footer {
+                flex-direction: column;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--light);
+            text-align: center;
+            padding: 30px;
+            border-top: 2px solid var(--secondary);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes cardSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 50px 25px;
+            }
+
+            header {
+                padding: 40px 25px;
+            }
+
+            nav {
+                gap: 15px;
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .contact-card {
+                padding: 30px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* SCROLL REVEAL */
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER HERO -->
+    <header>
+        <div class="header-content">
+            <div class="header-badge" data-es="⚙️ EXCELENCIA EN INGENIERÍA" data-en="⚙️ ENGINEERING EXCELLENCE">⚙️ ENGINEERING EXCELLENCE</div>
+            <h1>Maria Margarita Vergara Rodriguez</h1>
+            <p class="tagline" data-es="Ingeniera QA/QC Senior | Petróleo & Gas | Minería" data-en="Senior QA/QC Mechanical Engineer | Oil & Gas | Mining">Senior QA/QC Mechanical Engineer | Oil & Gas | Mining</p>
+            
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Years QA/QC Leadership</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">400+</span>
+                    <span class="stat-label">Welded Joints Inspected</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">NDT Certifications</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Critical Incidents</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROFESSIONAL PROFILE HIGHLIGHT -->
+    <section style="background: linear-gradient(135deg, var(--primary) 0%, #1a2847 100%); color: var(--light); padding: 60px 40px; text-align: center;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 style="color: var(--light); text-align: center; font-size: 2.2rem; margin-bottom: 30px; font-weight: 700; letter-spacing: -0.5px;">
+                Ingeniera Mecánico Senior QA/QC
+            </h2>
+            <h3 style="color: var(--secondary); font-size: 1.3rem; font-weight: 600; margin-bottom: 35px; letter-spacing: 0.5px;">
+                Minería & Oil & Gas | EPC Megaprojects
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 35px;">
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px; border-radius: 6px; animation: slideInUp 0.8s ease-out 0.1s both;">
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">Líder de Calidad</p>
+                    <p style="color: #b8a888; font-size: 0.85rem;">Quality Leadership</p>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px; border-radius: 6px; animation: slideInUp 0.8s ease-out 0.2s both;">
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">NDT PT Nivel II</p>
+                    <p style="color: #b8a888; font-size: 0.85rem;">SNT-TC-1A</p>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px; border-radius: 6px; animation: slideInUp 0.8s ease-out 0.3s both;">
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">ASME B31.3</p>
+                    <p style="color: #b8a888; font-size: 0.85rem;">Process Piping</p>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px; border-radius: 6px; animation: slideInUp 0.8s ease-out 0.4s both;">
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">ASME B31.8</p>
+                    <p style="color: #b8a888; font-size: 0.85rem;">Gas Transmission</p>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px; border-radius: 6px; animation: slideInUp 0.8s ease-out 0.5s both;">
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">API 1104</p>
+                    <p style="color: #b8a888; font-size: 0.85rem;">Pipeline Welding</p>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px; border-radius: 6px; animation: slideInUp 0.8s ease-out 0.6s both;">
+                    <p style="color: var(--secondary); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">ISO 9001</p>
+                    <p style="color: #b8a888; font-size: 0.85rem;">Quality Mgmt</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 30px; animation: slideInUp 0.8s ease-out 0.4s both;">
+                <p style="font-size: 1.05rem; line-height: 1.8; color: #d4d4d4;">
+                    <b style="color: var(--secondary);">Especialista en Integridad Mecánica</b> con autoridad técnica en inspección de soldadura, NDT Nivel II, y normativa ASME/API. 
+                    <b style="color: var(--secondary);">Liderazgo comprobado</b> en megaproyectos EPC con cumplimiento al 100% en Oil & Gas, tuberías, refinerías, instalaciones de gas y petroquímicos. 
+                    <b style="color: var(--secondary);">Stop Work Authority</b> | Firma de liberaciones técnicas (ITO) | Gestión de equipos multidisciplinarios | Cero incidentes críticos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#testimonials">Testimonios</a>
+        <a href="#docs">Documentación</a>
+        <a href="#contacto">Contacto</a>
+        <button id="langToggle" class="lang-toggle" onclick="toggleLanguage()">🇬🇧 English</button>
+    </nav>
+
+    <!-- EXPERTISE SECTION -->
+    <section id="expertise" style="background: white; padding: 80px 40px;">
+        <h2>Core Competencies & Certifications</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+            <div class="card">
+                <h3>🔬 NDT Certifications</h3>
+                <p><b>PT – Penetrant Testing</b> Nivel II SNT-TC-1A (Vigente 2026)</p>
+                <p><b>UT – Ultrasonido</b> Nivel I</p>
+                <p><b>MT – Partículas Magnéticas</b> Nivel I</p>
+                <p style="font-size: 0.9rem; color: #2d6a4f; margin-top: 15px;">✓ Complete NDT traceability & documentation</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ Technical Standards Mastery</h3>
+                <p><b>ASME B31.3</b> – Process Piping</p>
+                <p><b>ASME B31.8</b> – Gas Transmission Piping</p>
+                <p><b>API 1104</b> – Pipeline Welding</p>
+                <p><b>AWS D1.1</b> – Structural Welding Code</p>
+                <p><b>ASME Secc. VIII</b> – Pressure Vessels</p>
+            </div>
+            <div class="card">
+                <h3>🏆 Authority & Leadership</h3>
+                <p><b>Stop Work Authority</b> – Non-compliance with ASME/API standards</p>
+                <p><b>WPS/PQR Approval</b> – Technical signature on welding procedures</p>
+                <p><b>Technical Liberation</b> – ITO sign-off on pressurized systems</p>
+                <p><b>Multidisciplinary Teams</b> – Direct mandate coordination</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2>Critical EPC & Industrial Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🔧 Minera Los Pelambres</h3>
+                <p><b>Project:</b> Mineroducto 36" Ø | 7 km Rehabilitation (2025-2026)</p>
+                <p><b>Role:</b> Supervisora de Calidad – Quality Lead</p>
+                <p><b>Results:</b> ✓ 120+ Technical Liberations | ✓ Zero Schedule Delays | ✓ 97% First-Pass Approval Rate</p>
+                <p style="font-size: 0.85rem; color: #666;">HDPE Internal Lining | 100% Joint Inspection | 100% NCR Closure</p>
+            </div>
+            <div class="card">
+                <h3>⛽ Refinería CONCON</h3>
+                <p><b>Project:</b> Plant Turnaround | Hydrocracking Unit (2021-2022)</p>
+                <p><b>Scope:</b> Piping 2"-6" Ø | Heat Exchangers | Static Equipment</p>
+                <p><b>Results:</b> ✓ 100% HSE Compliance | ✓ Zero Incidents | ✓ Full Dossier Approval</p>
+                <p style="font-size: 0.85rem; color: #666;">ASME B31.3 | Hydrostatic Testing | NDT Full Coverage</p>
+            </div>
+            <div class="card">
+                <h3>🏭 Refinería BIO BIO</h3>
+                <p><b>Project:</b> Major Plant Maintenance & Inspection (2021-2022)</p>
+                <p><b>Scope:</b> Propane Storage Spheres | Pipeline Integrity | Equipment Overhaul</p>
+                <p><b>Results:</b> ✓ Structural Integrity Validated | ✓ Full Environmental Compliance | ✓ Operational Continuity</p>
+                <p style="font-size: 0.85rem; color: #666;">Asset D-3001, D-1004, D-1005 | Environmental Systems (DYNATEC)</p>
+            </div>
+            <div class="card">
+                <h3>⛏️ Minera Escondida</h3>
+                <p><b>Project:</b> GHEO Pump Replacement | Piping 2"-6" Ø (2023)</p>
+                <p><b>Role:</b> Encargada de Calidad / Inspector Senior</p>
+                <p><b>Results:</b> ✓ 48 Welds Inspected | ✓ 96% First-Pass Rate | ✓ PT Level II Full Documentation</p>
+                <p style="font-size: 0.85rem; color: #666;">ASME B31.3 | WPS/PQR Approval | Complete Quality Dossier</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Mina Los Colorados</h3>
+                <p><b>Project:</b> Fuel Station Construction & Commissioning (2024)</p>
+                <p><b>Role:</b> Encargada de Calidad – QA Lead</p>
+                <p><b>Results:</b> ✓ 3 Contractors Coordinated | ✓ 100% Milestone Compliance | ✓ Zero NCR on Handover</p>
+                <p style="font-size: 0.85rem; color: #666;">ASME B31.3 | Hydraulic Testing | Zero Punch List Items</p>
+            </div>
+            <div class="card">
+                <h3>🛢️ PDVSA Refinación (El Palito)</h3>
+                <p><b>Project:</b> Pipelines 16", 20", 42" Ø | Multi-Station EPC (2007-2016)</p>
+                <p><b>Scope:</b> Gasoductos | Valve Stations | Measurement & Segregation Systems</p>
+                <p><b>Results:</b> ✓ 400+ Welded Joints | ✓ <4% Rejection Rate | ✓ Full Commissioning Leadership</p>
+                <p style="font-size: 0.85rem; color: #666;">ASME B31.8 | API 1104 | Automatic Valve Stations | Process Station ULE Amuay</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" style="background: linear-gradient(135deg, rgba(245, 241, 232, 0.8) 0%, rgba(212, 175, 55, 0.05) 100%); padding: 80px 40px;">
+        <h2>Professional Endorsements</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
+            <div style="background: white; padding: 35px; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--secondary); animation: cardSlideUp 0.8s ease-out 0.1s both;">
+                <p style="font-size: 1rem; color: var(--text-primary); font-style: italic; margin-bottom: 20px; line-height: 1.8;">
+                    "María se caracteriza por ser una profesional organizada, proactiva y orientada a resultados, con gran capacidad para trabajar en equipo y bajo presión. Su participación fue clave en el desarrollo de las actividades, demostrando sólidos conocimientos en control de calidad, inspección y cumplimiento de estándares. Destaca su ética profesional y atención al detalle en proyectos de alta exigencia como minería."
+                </p>
+                <p style="font-weight: 700; color: var(--primary);">Catalina Delgado</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Ingeniera en Prevención de Riesgos Laborales<br>Atacama Tech SPA</p>
+            </div>
+
+            <div style="background: white; padding: 35px; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--secondary); animation: cardSlideUp 0.8s ease-out 0.2s both;">
+                <p style="font-size: 1rem; color: var(--text-primary); font-style: italic; margin-bottom: 20px; line-height: 1.8;">
+                    "María se distinguió por su sólida formación técnica, especialmente en control de calidad, inspección de procesos y aseguramiento del cumplimiento normativo. Su capacidad para identificar desviaciones y garantizar la integridad de los trabajos fue clave. Demostró ser responsable, comprometida y orientada a resultados con sobresalientes habilidades de liderazgo en terreno."
+                </p>
+                <p style="font-weight: 700; color: var(--primary);">Jaime Díaz Riveros</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Ingeniero Civil Mecánico<br>Refinerías CONCON & HUALPÉN (Ferrostaal)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTATION SECTION -->
+    <section id="docs">
+        <h2>Verified Professional Documentation</h2>
+        <div class="docs-grid">
+            <div class="doc-card">
+                <h3>📄 Professional CV</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px;">Complete experience record: 15+ years in QA/QC, NDT Certifications, ASME/API Standards expertise, EPC megaprojects leadership, and full technical competencies in oil & gas, refining, and mining sectors.</p>
+                <button class="btn" onclick="openPdfModal('pdfModalCV')" style="border: none; cursor: pointer;">Ver & Descargar PDF</button>
+            </div>
+            <div class="doc-card">
+                <h3>📋 Endorsement - Catalina Delgado</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px;">Professional recommendation from Ingeniera en Prevención de Riesgos at Atacama Tech, validating quality control expertise, technical rigor, and performance in critical mining projects (Mina Los Colorados).</p>
+                <button class="btn" onclick="openPdfModal('pdfModalCatalina')" style="border: none; cursor: pointer;">Ver & Descargar PDF</button>
+            </div>
+            <div class="doc-card">
+                <h3>📋 Endorsement - Jaime Díaz Riveros</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px;">Professional certification from Ingeniero Civil Mecánico, attesting to exemplary performance in plant turnarounds at CONCON & HUALPÉN refineries, compliance expertise, and field leadership capabilities.</p>
+                <button class="btn" onclick="openPdfModal('pdfModalJaime')" style="border: none; cursor: pointer;">Ver & Descargar PDF</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contacto">
+        <h2>International Availability & Deployment Ready</h2>
+        <div class="contact-card">
+            <p><b>🌍 Available for:</b> Immediate Deployment | Rotational Contracts | On-site International Projects | EPC Megaprojects</p>
+            
+            <div class="contact-icons">
+                <a href="tel:+56944296079" class="icon-link">📞 +56 9 4429 6079</a>
+                <a href="/cdn-cgi/l/email-protection#e9849fdedddadededca98e84888085c78a8684" class="icon-link">✉️ Email</a>
+                <a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank" class="icon-link">🔗 LinkedIn</a>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(212, 175, 55, 0.3); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <div>
+                    <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📍 Location</p>
+                    <p>Viña del Mar, Chile | Ready to relocate</p>
+                </div>
+                <div>
+                    <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🌐 Languages</p>
+                    <p>Español (Nativo) | English (Technical)</p>
+                </div>
+                <div>
+                    <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">✈️ Visa</p>
+                    <p>Passport Ready | Processing Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF VIEWER MODALS -->
+    
+    <!-- CV Modal -->
+    <div id="pdfModalCV" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3>📄 Professional CV - Maria Margarita Vergara Rodriguez</h3>
+                <button class="pdf-modal-close" onclick="closePdfModal('pdfModalCV')">&times;</button>
+            </div>
+            <div class="pdf-modal-body" id="pdfBodyCV">
+                <canvas id="pdfCanvasCV" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></canvas>
+            </div>
+            <div class="pdf-modal-footer">
+                <button onclick="previousPage('CV')" class="pdf-download-btn" style="background: linear-gradient(135deg, #666, #999);">← Anterior</button>
+                <span id="pageInfoCV" style="color: #666; font-weight: 600;"></span>
+                <button onclick="nextPage('CV')" class="pdf-download-btn" style="background: linear-gradient(135deg, #666, #999);">Siguiente →</button>
+                <a href="Cv_Maria_Vergara.pdf" download class="pdf-download-btn">⬇️ Descargar</a>
+            </div>
+        </div>
     </div>
-    <div class="card">
-      <h3>Carta Catalina</h3>
-      <a class="btn" href="Carta_Catalina.pdf" target="_blank">Descargar</a>
+
+    <!-- Carta Catalina Modal -->
+    <div id="pdfModalCatalina" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3>📋 Endorsement - Catalina Delgado</h3>
+                <button class="pdf-modal-close" onclick="closePdfModal('pdfModalCatalina')">&times;</button>
+            </div>
+            <div class="pdf-modal-body" id="pdfBodyCatalina">
+                <canvas id="pdfCanvasCatalina" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></canvas>
+            </div>
+            <div class="pdf-modal-footer">
+                <button onclick="previousPage('Catalina')" class="pdf-download-btn" style="background: linear-gradient(135deg, #666, #999);">← Anterior</button>
+                <span id="pageInfoCatalina" style="color: #666; font-weight: 600;"></span>
+                <button onclick="nextPage('Catalina')" class="pdf-download-btn" style="background: linear-gradient(135deg, #666, #999);">Siguiente →</button>
+                <a href="Carta_Catalina.pdf" download class="pdf-download-btn">⬇️ Descargar</a>
+            </div>
+        </div>
     </div>
-    <div class="card">
-      <h3>Carta Jaime</h3>
-      <a class="btn" href="Carta_Jaime.pdf" target="_blank">Descargar</a>
+
+    <!-- Carta Jaime Modal -->
+    <div id="pdfModalJaime" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3>📋 Endorsement - Jaime Díaz Riveros</h3>
+                <button class="pdf-modal-close" onclick="closePdfModal('pdfModalJaime')">&times;</button>
+            </div>
+            <div class="pdf-modal-body" id="pdfBodyJaime">
+                <canvas id="pdfCanvasJaime" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></canvas>
+            </div>
+            <div class="pdf-modal-footer">
+                <button onclick="previousPage('Jaime')" class="pdf-download-btn" style="background: linear-gradient(135deg, #666, #999);">← Anterior</button>
+                <span id="pageInfoJaime" style="color: #666; font-weight: 600;"></span>
+                <button onclick="nextPage('Jaime')" class="pdf-download-btn" style="background: linear-gradient(135deg, #666, #999);">Siguiente →</button>
+                <a href="Carta_Jaime.pdf" download class="pdf-download-btn">⬇️ Descargar</a>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
 
-<section class="section" id="contacto">
-  <h2>Available for International Projects</h2>
-  <div class="card">
-    <p><b>Immediate deployment | Rotational | On-site</b></p>
-    <p>📞 +56944296079</p>
-    <p>📧 <a href="mailto:mv743775@gmail.com">mv743775@gmail.com</a></p>
-    <p>🔗 <a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank">LinkedIn Profile</a></p>
-  </div>
-</section>
+    <!-- FOOTER -->
+    <footer>
+        Maria Margarita Vergara Rodriguez | Integrity Engineering & QA/QC Excellence
+    </footer>
 
-<div class="footer">
-  Vergara Integrity Engineering | QA/QC & Mechanical Integrity
-</div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // LANGUAGE SYSTEM
+        const translations = {
+            es: {
+                'nav-expertise': 'Expertise',
+                'nav-projects': 'Proyectos',
+                'nav-testimonials': 'Testimonios',
+                'nav-docs': 'Documentación',
+                'nav-contacto': 'Contacto',
+                'header-badge': '⚙️ EXCELENCIA EN INGENIERÍA',
+                'tagline': 'Ingeniera QA/QC Senior | Petróleo & Gas | Minería',
+                'profile-title': 'Ingeniera Mecánico Senior QA/QC',
+                'profile-subtitle': 'Minería & Petróleo y Gas | Megaproyectos EPC',
+                'expertise-section': 'Competencias Técnicas & Certificaciones',
+                'projects-section': 'Proyectos EPC Críticos e Industriales',
+                'testimonials-section': 'Endorsements Profesionales',
+                'docs-section': 'Documentación Profesional Verificada',
+                'contact-section': 'Disponibilidad Internacional & Listo para Despliegue',
+                'contact-available': '🌍 Disponible para:',
+                'contact-location': '📍 Ubicación',
+                'contact-languages': '🌐 Idiomas',
+                'contact-visa': '✈️ Visa',
+                'contact-location-text': 'Viña del Mar, Chile | Listo para reubicarse',
+                'contact-languages-text': 'Español (Nativo) | English (Técnico)',
+                'contact-visa-text': 'Pasaporte Listo | Trámite de Visa Disponible',
+                'footer-text': 'Maria Margarita Vergara Rodriguez | Ingeniería de Integridad & Excelencia QA/QC'
+            },
+            en: {
+                'nav-expertise': 'Expertise',
+                'nav-projects': 'Projects',
+                'nav-testimonials': 'Testimonials',
+                'nav-docs': 'Documentation',
+                'nav-contacto': 'Contact',
+                'header-badge': '⚙️ ENGINEERING EXCELLENCE',
+                'tagline': 'Senior QA/QC Mechanical Engineer | Oil & Gas | Mining',
+                'profile-title': 'Ingeniera Mecánico Senior QA/QC',
+                'profile-subtitle': 'Mining & Oil & Gas | EPC Megaprojects',
+                'expertise-section': 'Core Competencies & Certifications',
+                'projects-section': 'Critical EPC & Industrial Projects',
+                'testimonials-section': 'Professional Endorsements',
+                'docs-section': 'Verified Professional Documentation',
+                'contact-section': 'International Availability & Deployment Ready',
+                'contact-available': '🌍 Available for:',
+                'contact-location': '📍 Location',
+                'contact-languages': '🌐 Languages',
+                'contact-visa': '✈️ Visa',
+                'contact-location-text': 'Viña del Mar, Chile | Ready to relocate',
+                'contact-languages-text': 'Español (Native) | English (Technical)',
+                'contact-visa-text': 'Passport Ready | Visa Processing Available',
+                'footer-text': 'Maria Margarita Vergara Rodriguez | Integrity Engineering & QA/QC Excellence'
+            }
+        };
 
-</body>
-</html>
+        // Initialize language from localStorage or default to Spanish
+        let currentLanguage = localStorage.getItem('preferredLanguage') || 'es';
 
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            applyLanguage(currentLanguage);
+        });
+
+        // Toggle language function
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            localStorage.setItem('preferredLanguage', currentLanguage);
+            applyLanguage(currentLanguage);
+            updateLanguageButton();
+        }
+
+        // Apply language to all elements with data attributes
+        function applyLanguage(lang) {
+            // Update all elements with data-es and data-en attributes
+            document.querySelectorAll('[data-es][data-en]').forEach(element => {
+                element.textContent = lang === 'es' ? element.getAttribute('data-es') : element.getAttribute('data-en');
+            });
+
+            // Update navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            const navTexts = {
+                expertise: translations[lang]['nav-expertise'],
+                projects: translations[lang]['nav-projects'],
+                testimonials: translations[lang]['nav-testimonials'],
+                docs: translations[lang]['nav-docs'],
+                contacto: translations[lang]['nav-contacto']
+            };
+
+            navLinks.forEach(link => {
+                if (link.href.includes('#expertise')) link.textContent = navTexts.expertise;
+                if (link.href.includes('#projects')) link.textContent = navTexts.projects;
+                if (link.href.includes('#testimonials')) link.textContent = navTexts.testimonials;
+                if (link.href.includes('#docs')) link.textContent = navTexts.docs;
+                if (link.href.includes('#contacto')) link.textContent = navTexts.contacto;
+            });
+
+            // Update section titles
+            updateSectionTitles(lang);
+            updateContactSection(lang);
+            updateFooter(lang);
+        }
+
+        // Update section titles dynamically
+        function updateSectionTitles(lang) {
+            const sections = {
+                expertise: document.querySelector('#expertise h2'),
+                projects: document.querySelector('#projects h2'),
+                testimonials: document.querySelector('#testimonials h2'),
+                docs: document.querySelector('#docs h2'),
+                contacto: document.querySelector('#contacto h2')
+            };
+
+            if (sections.expertise) sections.expertise.textContent = lang === 'es' ? 'Competencias Técnicas & Certificaciones' : 'Core Competencies & Certifications';
+            if (sections.projects) sections.projects.textContent = lang === 'es' ? 'Proyectos EPC Críticos e Industriales' : 'Critical EPC & Industrial Projects';
+            if (sections.testimonials) sections.testimonials.textContent = lang === 'es' ? 'Endorsements Profesionales' : 'Professional Endorsements';
+            if (sections.docs) sections.docs.textContent = lang === 'es' ? 'Documentación Profesional Verificada' : 'Verified Professional Documentation';
+            if (sections.contacto) sections.contacto.textContent = lang === 'es' ? 'Disponibilidad Internacional & Listo para Despliegue' : 'International Availability & Deployment Ready';
+        }
+
+        // Update contact section
+        function updateContactSection(lang) {
+            const contactCard = document.querySelector('.contact-card');
+            if (contactCard) {
+                contactCard.innerHTML = lang === 'es' ? 
+                    `<p><b>🌍 Disponible para:</b> Despliegue Inmediato | Contratos Rotativos | Proyectos Internacionales On-site | Megaproyectos EPC</p>
+                    
+                    <div class="contact-icons">
+                        <a href="tel:+56944296079" class="icon-link">📞 +56 9 4429 6079</a>
+                        <a href="mailto:mv743775@gmail.com" class="icon-link">✉️ Email</a>
+                        <a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank" class="icon-link">🔗 LinkedIn</a>
+                    </div>
+
+                    <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(212, 175, 55, 0.3); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                        <div>
+                            <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📍 Ubicación</p>
+                            <p>Viña del Mar, Chile | Listo para reubicarse</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🌐 Idiomas</p>
+                            <p>Español (Nativo) | English (Técnico)</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">✈️ Visa</p>
+                            <p>Pasaporte Listo | Trámite de Visa Disponible</p>
+                        </div>
+                    </div>` :
+                    `<p><b>🌍 Available for:</b> Immediate Deployment | Rotational Contracts | On-site International Projects | EPC Megaprojects</p>
+                    
+                    <div class="contact-icons">
+                        <a href="tel:+56944296079" class="icon-link">📞 +56 9 4429 6079</a>
+                        <a href="mailto:mv743775@gmail.com" class="icon-link">✉️ Email</a>
+                        <a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank" class="icon-link">🔗 LinkedIn</a>
+                    </div>
+
+                    <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(212, 175, 55, 0.3); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                        <div>
+                            <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📍 Location</p>
+                            <p>Viña del Mar, Chile | Ready to relocate</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🌐 Languages</p>
+                            <p>Español (Native) | English (Technical)</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: #b8a888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">✈️ Visa</p>
+                            <p>Passport Ready | Visa Processing Available</p>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        // Update footer
+        function updateFooter(lang) {
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.textContent = lang === 'es' ? 
+                    'Maria Margarita Vergara Rodriguez | Ingeniería de Integridad & Excelencia QA/QC' :
+                    'Maria Margarita Vergara Rodriguez | Integrity Engineering & QA/QC Excellence';
+            }
+        }
+
+        // Update language button text
+        function updateLanguageButton() {
+            const button = document.getElementById('langToggle');
+            if (button) {
+                button.textContent = currentLanguage === 'es' ? '🇬🇧 English' : '🇪🇸 Español';
+            }
+        }
+
+        // Initialize button on load
+        window.addEventListener('load', updateLanguageButton);
+
+        // Set up PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // PDF State Management
+        const pdfState = {
+            CV: { url: 'Cv_Maria_Vergara.pdf', pdf: null, currentPage: 1, totalPages: 0 },
+            Catalina: { url: 'Carta_Catalina.pdf', pdf: null, currentPage: 1, totalPages: 0 },
+            Jaime: { url: 'Carta_Jaime.pdf', pdf: null, currentPage: 1, totalPages: 0 }
+        };
+
+        // Load and render PDF
+        async function loadPdf(docType) {
+            if (pdfState[docType].pdf) {
+                renderPage(docType, pdfState[docType].currentPage);
+                return;
+            }
+
+            try {
+                const pdf = await pdfjsLib.getDocument(pdfState[docType].url).promise;
+                pdfState[docType].pdf = pdf;
+                pdfState[docType].totalPages = pdf.numPages;
+                pdfState[docType].currentPage = 1;
+                renderPage(docType, 1);
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                const canvasId = `pdfCanvas${docType}`;
+                const canvas = document.getElementById(canvasId);
+                canvas.parentElement.innerHTML = `<p style="padding: 20px; text-align: center; color: #d32f2f;">Error loading PDF. Please download directly.</p>`;
+            }
+        }
+
+        // Render specific page
+        async function renderPage(docType, pageNum) {
+            const pdf = pdfState[docType].pdf;
+            if (!pdf) return;
+
+            const page = await pdf.getPage(pageNum);
+            const canvas = document.getElementById(`pdfCanvas${docType}`);
+            const ctx = canvas.getContext('2d');
+            
+            const viewport = page.getViewport({ scale: 1.5 });
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+            
+            // Update page info
+            const pageLabel = currentLanguage === 'es' ? 'Página' : 'Page';
+            const ofLabel = currentLanguage === 'es' ? 'de' : 'of';
+            document.getElementById(`pageInfo${docType}`).textContent = `${pageLabel} ${pageNum} ${ofLabel} ${pdfState[docType].totalPages}`;
+        }
+
+        // Navigation functions
+        function nextPage(docType) {
+            if (pdfState[docType].currentPage < pdfState[docType].totalPages) {
+                pdfState[docType].currentPage++;
+                renderPage(docType, pdfState[docType].currentPage);
+            }
+        }
+
+        function previousPage(docType) {
+            if (pdfState[docType].currentPage > 1) {
+                pdfState[docType].currentPage--;
+                renderPage(docType, pdfState[docType].currentPage);
+            }
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a:not(.lang-toggle)').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // PDF Modal Functions
+        function openPdfModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+
+                if (modalId === 'pdfModalCV') {
+                    loadPdf('CV');
+                } else if (modalId === 'pdfModalCatalina') {
+                    loadPdf('Catalina');
+                } else if (modalId === 'pdfModalJaime') {
+                    loadPdf('Jaime');
+                }
+            }
+        }
+
+        function closePdfModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside the modal content
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.pdf-modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.pdf-modal.open');
+                modals.forEach(modal => {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Fade-in on scroll effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
