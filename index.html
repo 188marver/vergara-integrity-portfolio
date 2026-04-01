@@ -3,235 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>María Vergara | Senior QA/QC Engineer</title>
-
+<title>Vergara Integrity Engineering</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #0b0f14;
-    color: #e6edf3;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
-h1 { font-size: 2.5rem; color: #fff; }
-h2 { color: #00c6ff; margin-bottom: 15px; }
-h3 { color: #00c6ff; }
-
-.tagline {
-    color: #b0bac5;
-    max-width: 750px;
-}
-
-.highlights span {
-    display: inline-block;
-    background: #111826;
-    padding: 8px 12px;
-    margin: 5px;
-    border-left: 3px solid #00c6ff;
-}
-
-.btn {
-    padding: 12px 18px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-.primary { background: #00c6ff; color: #000; }
-.secondary { border: 1px solid #00c6ff; color: #00c6ff; }
-
-section {
-    border-top: 1px solid #1f2933;
-}
-
-.lang-toggle {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-}
-
-.lang-toggle button {
-    background: #111826;
-    color: #00c6ff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-.hidden { display: none; }
+body {margin:0;font-family:'Inter',sans-serif;background:#0a0f1a;color:#e6edf3;}
+header {padding:80px;background:linear-gradient(135deg,#020617,#0f172a);} 
+.hero h1 {font-size:44px;font-weight:800;margin-bottom:10px;}
+.hero h2 {font-size:20px;color:#1f6feb;margin-bottom:20px;}
+.hero p {color:#9aa4b2;max-width:700px;}
+.btn {display:inline-block;margin-top:20px;margin-right:10px;padding:12px 22px;border-radius:8px;background:#1f6feb;color:white;text-decoration:none;font-weight:600;}
+.section {padding:70px;}
+h2 {font-size:30px;margin-bottom:25px;border-left:4px solid #1f6feb;padding-left:10px;}
+.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.card {background:#111827;padding:25px;border-radius:14px;box-shadow:0 0 30px rgba(0,0,0,0.6);transition:0.3s;}
+.card:hover {transform:translateY(-5px);}
+.kpi {font-size:32px;font-weight:800;color:#1f6feb;}
+.footer {padding:50px;background:#020617;text-align:center;color:#9aa4b2;}
 </style>
-
-<script>
-function toggleLang(lang) {
-    document.querySelectorAll('.es').forEach(e => e.classList.add('hidden'));
-    document.querySelectorAll('.en').forEach(e => e.classList.add('hidden'));
-    document.querySelectorAll('.' + lang).forEach(e => e.classList.remove('hidden'));
-}
-</script>
-
 </head>
-
 <body>
 
-<div class="lang-toggle">
-<button onclick="toggleLang('es')">ES</button>
-<button onclick="toggleLang('en')">EN</button>
-</div>
+<header>
+  <div class="hero">
+    <h1>María Margarita Vergara Rodríguez</h1>
+    <h2>Senior QA/QC Engineer | Mechanical Integrity & Welding Inspection Specialist</h2>
+    <p>Especialista en integridad de activos críticos para proyectos EPC en Oil & Gas, minería y refinerías. Enfocada en confiabilidad operacional, cumplimiento ASME/API y ejecución en campo de alto impacto.</p>
+    <p>Specialist in critical asset integrity for EPC projects across Oil & Gas, mining and refineries. Focused on reliability, ASME/API compliance and high-impact field execution.</p>
+    <a class="btn" href="#">Descargar CV</a>
+    <a class="btn" href="#contacto">Contacto</a>
+  </div>
+</header>
 
-<!-- HERO -->
-<section>
-<div class="container">
-
-<h1>María Margarita Vergara Rodríguez</h1>
-
-<h2>Senior QA/QC Engineer | Mechanical Integrity & Welding Inspection Specialist</h2>
-
-<p class="tagline es">
-Ingeniera Mecánica con +15 años asegurando integridad mecánica en activos críticos de Oil & Gas, minería y refinerías.
-Autoridad técnica en QA/QC, inspección de soldadura y cumplimiento ASME/API en proyectos EPC.
-</p>
-
-<p class="tagline en hidden">
-Mechanical Engineer with 15+ years ensuring integrity of critical assets in Oil & Gas, mining and refineries.
-Technical authority in QA/QC, welding inspection and ASME/API compliance in EPC projects.
-</p>
-
-<div class="highlights">
-<span>✔ 0 QA/QC delays</span>
-<span>✔ 100% audit compliance</span>
-<span>✔ Critical system release authority</span>
-<span>✔ Stop Work Authority</span>
-</div>
-
-<div>
-<a href="cv.pdf" class="btn primary" download>⬇ Descargar CV</a>
-<a href="https://www.linkedin.com/in/maria-vergara-678228262" target="_blank" class="btn secondary">LinkedIn</a>
-</div>
-
-</div>
+<section class="section">
+  <h2>Impacto Profesional | Professional Impact</h2>
+  <div class="grid">
+    <div class="card"><div class="kpi">15+</div>Años de experiencia | Years of experience</div>
+    <div class="card"><div class="kpi">6</div>Paradas de planta ejecutadas | Shutdowns executed</div>
+    <div class="card"><div class="kpi">Oil & Gas</div>Refinerías y minería</div>
+    <div class="card"><div class="kpi">ASME / API</div>Normativa internacional</div>
+  </div>
 </section>
 
-<!-- VALUE -->
-<section>
-<div class="container">
-
-<h3 class="es">Propuesta de Valor</h3>
-<h3 class="en hidden">Value Proposition</h3>
-
-<p class="es">
-Participación en mantenimientos mayores y paradas de planta en refinerías,
-interviniendo activos críticos de hidrocarburos en entornos de alta presión y riesgo,
-asegurando integridad mecánica, cumplimiento normativo y retorno seguro a operación.
-</p>
-
-<p class="en hidden">
-Proven experience in major shutdowns and refinery maintenance,
-working on critical hydrocarbon assets under high-risk conditions,
-ensuring mechanical integrity, compliance and safe return to operation.
-</p>
-
-</div>
+<section class="section">
+  <h2>Experiencia EPC | EPC Experience</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Refinería El Palito</h3>
+      <p>3 Shutdowns ejecutados</p>
+      <p>Inspección QA/QC, integridad mecánica y control de soldadura</p>
+    </div>
+    <div class="card">
+      <h3>Refinería Concón</h3>
+      <p>Parada de planta</p>
+      <p>Unidad de hidrocracking, intercambiadores y equipos críticos</p>
+    </div>
+    <div class="card">
+      <h3>Refinería Biobío</h3>
+      <p>Parada de planta</p>
+      <p>Inspección de equipos estáticos y confiabilidad operacional</p>
+    </div>
+    <div class="card">
+      <h3>Minera Escondida</h3>
+      <p>Parada de planta</p>
+      <p>Control QA/QC en entorno minero de alta exigencia</p>
+    </div>
+  </div>
 </section>
 
-<!-- EL PALITO -->
-<section>
-<div class="container">
-
-<h3>El Palito Refinery – Venezuela</h3>
-<p><strong>Senior QA/QC Inspector | 2007 – 2010</strong></p>
-
-<ul class="es">
-<li>Mantenimiento mayor y paradas de planta en refinería ~140.000 BPD.</li>
-<li>Inspección de tanques, esferas de propano, piping y subestaciones.</li>
-<li>Ensayos NDT y control de soldadura bajo ASME/API.</li>
-<li>Identificación de corrosión, desgaste y discontinuidades.</li>
-<li>Liberación segura de equipos para retorno a operación.</li>
-</ul>
-
-<ul class="en hidden">
-<li>Major shutdowns in ~140,000 BPD refinery.</li>
-<li>Inspection of tanks, propane spheres, piping and substations.</li>
-<li>NDT and welding inspection under ASME/API standards.</li>
-<li>Damage mechanism identification (corrosion, wear).</li>
-<li>Safe equipment release for operation.</li>
-</ul>
-
-</div>
+<section class="section">
+  <h2>Evidencia de Valor | Value Evidence</h2>
+  <div class="grid">
+    <div class="card">✔ Ejecución en campo en entornos críticos</div>
+    <div class="card">✔ Soporte directo a integridad mecánica</div>
+    <div class="card">✔ Aseguramiento de calidad en soldadura</div>
+    <div class="card">✔ Cumplimiento normativo internacional</div>
+  </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section>
-<div class="container">
-
-<h3 class="es">Experiencia Clave</h3>
-<h3 class="en hidden">Key Experience</h3>
-
-<ul>
-<li>Mining Projects – QA/QC Lead (Los Pelambres, Escondida)</li>
-<li>Fuel Station Construction – ASME B31.3</li>
-<li>Refinery Shutdowns – ENAP</li>
-<li>Gas Pipelines up to 42" – PDVSA GAS</li>
-</ul>
-
-</div>
+<section class="section">
+  <h2>Validación Profesional | Professional Validation</h2>
+  <div class="grid">
+    <div class="card">📄 CV Profesional (PDF descargable)</div>
+    <div class="card">📄 Carta de Recomendación – Catalina Delgado</div>
+    <div class="card">📄 Carta de Recomendación – Jaime Díaz</div>
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section>
-<div class="container">
-
-<h3>Contacto</h3>
-
-<p>📍 Viña del Mar, Chile</p>
-<p>📞 +56 9 4429 6079</p>
-<p>✉ mv743775@gmail.com</p>
-
-<p class="es">Disponible para proyectos internacionales</p>
-<p class="en hidden">Available for international EPC projects</p>
-
-</div>
+<section class="section" id="contacto">
+  <h2>Contacto Estratégico | Strategic Contact</h2>
+  <div class="card">
+    <p><b>Disponibilidad:</b> Proyectos EPC internacionales | modalidad rotacional / on-site</p>
+    <p><b>Availability:</b> International EPC projects | rotational / site-based roles</p>
+    <p>📞 +56944296079</p>
+    <p>📧 mv743775@gmail.com</p>
+    <p>🔗 LinkedIn: www.linkedin.com/in/maria-vergara-678228262</p>
+    <p>💻 GitHub: github.com/188marver/vergara-integrity-portfolio</p>
+  </div>
 </section>
+
+<div class="footer">
+  <p>Vergara Integrity Engineering | High Value QA/QC & Mechanical Integrity Solutions</p>
+</div>
 
 </body>
 </html>
-/ (root)
-│── index.html
-│── cv.pdf
-│
-├── /certificaciones
-│ ├── pt-nivel2.pdf
-│ ├── ut-nivel1.pdf
-│ ├── mt-nivel1.pdf
-│
-├── /imagenes
-├── proyecto1.jpg
-├── refineria.jpg
-├── piping.jpg
-├── inspeccion.jpg
-<div class="cert">
-<h4>PT Nivel II – SNT-TC-1A</h4>
-<p class="es">Ensayos No Destructivos – Vigente 2026</p>
-<p class="en hidden">Non-Destructive Testing – Valid until 2026</p>
-<a href="certificaciones/pt-nivel2.pdf" download class="btn secondary">Descargar</a>
-</div>
-
-<div class="cert">
-<h4>Ultrasonido Nivel I</h4>
-<a href="certificaciones/ut-nivel1.pdf" download class="btn secondary">Download</a>
-</div>
-
-<div class="cert">
-<h4>Partículas Magnéticas Nivel I</h4>
-<a href="certificaciones/mt-nivel1.pdf" download class="btn secondary">Download</a>
-</div>
-
-
-
+href=\"cv-maria-vergara.pdf\"
 
